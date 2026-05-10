@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -39,6 +40,7 @@ Ultima modifica: 10/05/2026
     {
       "@type": "Dentist",
       "name": "Clinica Gemini - HolDent",
+      "telephone": "+39 030 2005908",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Via Conicchio 19",
@@ -51,6 +53,7 @@ Ultima modifica: 10/05/2026
     {
       "@type": "Dentist",
       "name": "Clinica Pentagon - HolDent",
+      "telephone": "+39 030 9826416",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Via Roma 78",
@@ -399,6 +402,20 @@ Ultima modifica: 10/05/2026
       gap: 24px;
     }
     
+    .modal-card {
+      padding: 28px;
+    }
+    
+    .sede-card {
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+    }
+    
+    .sede-card-arrow {
+      align-self: flex-end;
+    }
+    
     .whatsapp-sticky {
       width: 60px;
       height: 60px;
@@ -430,6 +447,82 @@ Ultima modifica: 10/05/2026
     font-size: 11px;
     font-weight: 700;
     color: var(--color-warning);
+  }
+  
+  /* Modal */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(10, 22, 40, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 200ms ease;
+  }
+  
+  .modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  .modal-card {
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(10, 22, 40, 0.10);
+    padding: 40px;
+    max-width: 480px;
+    width: 100%;
+    transform: scale(0.95) translateY(20px);
+    transition: transform 250ms ease-out;
+  }
+  
+  .modal-overlay.active .modal-card {
+    transform: scale(1) translateY(0);
+  }
+  
+  .modal-open {
+    overflow: hidden;
+  }
+  
+  .sede-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    border: 1.5px solid var(--color-alternate);
+    border-radius: 18px;
+    cursor: pointer;
+    transition: all 200ms ease;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .sede-card:hover {
+    border-color: var(--color-primary);
+    background: var(--color-alternate);
+    transform: translateX(2px);
+  }
+  
+  .sede-card-icon {
+    flex-shrink: 0;
+  }
+  
+  .sede-card-content {
+    flex: 1;
+  }
+  
+  .sede-card-arrow {
+    flex-shrink: 0;
+    color: var(--color-outline);
   }
   
   .badge-l145-block {
@@ -540,33 +633,30 @@ Ultima modifica: 10/05/2026
   <div class="overline hide-mobile" style="color: var(--color-outline); letter-spacing: 0.1em;">
     × Convenzione Questura di Brescia
   </div>
-  <a href="https://wa.me/393792022228?text=Salve%2C%20sono%20un%20dipendente%20della%20Questura%20di%20Brescia%20e%20vorrei%20informazioni%20sulla%20convenzione%20HolDent." 
-     target="_blank" 
-     rel="noopener" 
+  <button onclick="openModal('whatsapp', 'navbar')"
+     aria-haspopup="dialog"
      class="whatsapp-glow"
-     onclick="trackCTA('whatsapp', 'navbar')"
-     style="background: var(--color-whatsapp); color: white; padding: 8px 16px; border-radius: 9999px; font-weight: 700; font-size: 13px; text-decoration: none; display: flex; align-items: center; gap: 6px; transition: all 200ms ease;">
+     style="background: var(--color-whatsapp); color: white; padding: 8px 16px; border-radius: 9999px; font-weight: 700; font-size: 13px; display: flex; align-items: center; gap: 6px; transition: all 200ms ease; border: none; cursor: pointer;">
     <img src="assets/whatsapp-logo.png" alt="" style="width: 16px; height: 16px;">
     WhatsApp
-  </a>
+  </button>
 </nav>
 
 <!-- ============ STICKY WHATSAPP BUTTON ============ -->
-<a href="https://wa.me/393792022228?text=Salve%2C%20sono%20un%20dipendente%20della%20Questura%20di%20Brescia%20e%20vorrei%20informazioni%20sulla%20convenzione%20HolDent." 
-   target="_blank"
-   rel="noopener"
-   class="whatsapp-sticky whatsapp-glow"
-   onclick="trackCTA('whatsapp', 'sticky')"
-   aria-label="Contatta HolDent su WhatsApp">
+<button class="whatsapp-sticky whatsapp-glow"
+   onclick="openModal('whatsapp', 'sticky')"
+   aria-haspopup="dialog"
+   aria-label="Contatta HolDent su WhatsApp"
+   style="border: none; cursor: pointer;">
   <img src="assets/whatsapp-logo.png" alt="" class="whatsapp-icon" style="width: 24px; height: 24px;">
   <span class="whatsapp-text">
     <div style="line-height: 1.2;">
-      XXXX
+      Scrivici su WhatsApp
       <div style="font-size: 10px; font-weight: 400; opacity: 0.9;">Risposta in giornata</div>
     </div>
   </span>
   <span class="tooltip-wa">Scrivici</span>
-</a>
+</button>
 
 <!-- ============ HERO ============ -->
 <section class="mesh-bg" style="padding: 120px 32px;">
@@ -591,21 +681,20 @@ Ultima modifica: 10/05/2026
     </p>
     
     <div class="cta-hero-group" style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px;">
-      <a href="https://wa.me/393792022228?text=Salve%2C%20sono%20un%20dipendente%20della%20Questura%20di%20Brescia%20e%20vorrei%20informazioni%20sulla%20convenzione%20HolDent." 
-         target="_blank"
-         rel="noopener"
-         onclick="trackCTA('whatsapp', 'hero')"
+      <button onclick="openModal('whatsapp', 'hero')"
+         aria-haspopup="dialog"
          class="btn whatsapp-glow"
-         style="background: var(--color-whatsapp); color: white;">
+         style="background: var(--color-whatsapp); color: white; border: none; cursor: pointer;">
         <img src="assets/whatsapp-logo.png" alt="" style="width: 20px; height: 20px;">
-        XXXXX al 030 9826416
-      </a>
-      <a href="tel:+390302005908" 
-         onclick="trackCTA('call', 'hero')"
-         class="btn btn-secondary">
+        Scrivici su WhatsApp
+      </button>
+      <button onclick="openModal('phone', 'hero')"
+         aria-haspopup="dialog"
+         class="btn btn-secondary"
+         style="cursor: pointer;">
         <span class="material-symbols-outlined" style="font-size: 18px;">call</span>
-        Chiama il 030 200 5908
-      </a>
+        Chiama una sede
+      </button>
     </div>
     
     <p class="caption" style="color: var(--color-outline);">
@@ -629,20 +718,16 @@ Ultima modifica: 10/05/2026
       <!-- Clinica Gemini -->
       <div class="card">
         <span class="material-symbols-outlined" style="font-size: 40px; color: var(--color-primary); margin-bottom: 16px;">location_city</span>
-        <div class="overline" style="color: var(--color-primary); margin-bottom: 8px;">Sede Brescia</div>
+        <div class="overline" style="color: var(--color-primary); margin-bottom: 8px;">SEDE BRESCIA</div>
         <h3 style="margin-bottom: 16px;">Clinica Gemini</h3>
         <p style="color: var(--color-outline); margin-bottom: 12px;">
           <strong>Via Conicchio 19, 25136 Brescia (BS)</strong>
         </p>
-        <p style="color: var(--color-outline); margin-bottom: 16px;">
-          A pochi minuti dalla Questura di Brescia. Odontoiatria generale, specialistica e pediatrica.
-        </p>
+        <p style="color: var(--color-outline); margin-bottom: 16px;">Sede di Brescia, a pochi minuti dalla Questura. Odontoiatria generale, specialistica e pediatrica.</p>
         <a href="tel:+390302005908" 
            onclick="trackCTA('call', 'card_gemini')"
-           style="color: var(--color-primary); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; font-size: 15px;">
-          <span class="material-symbols-outlined" style="font-size: 16px;">call</span>
-          Chiama 030 200 5908
-        </a>
+           style="color: var(--color-primary); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; font-size: 15px;">call
+Chiama 030 2005908</a>
       </div>
       
       <!-- Clinica Pentagon -->
@@ -656,14 +741,11 @@ Ultima modifica: 10/05/2026
         <p style="color: var(--color-outline); margin-bottom: 16px;">
           Sede di Franciacorta, raggiungibile da chi abita o lavora nella zona. Equipe multidisciplinare e laboratorio odontotecnico interno.
         </p>
-        <a href="https://wa.me/393792022228?text=Salve%2C%20sono%20un%20dipendente%20della%20Questura%20di%20Brescia%20e%20vorrei%20informazioni%20sulla%20convenzione%20HolDent." 
+        <a href="https://wa.me/39XXXXXXXXXX?text=Salve%2C%20sono%20un%20dipendente%20della%20Questura%20di%20Brescia%20e%20vorrei%20informazioni%20sulla%20convenzione%20HolDent." 
            target="_blank"
            rel="noopener"
            onclick="trackCTA('whatsapp', 'card_pentagon')"
-           style="color: var(--color-whatsapp); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; font-size: 15px;">
-          <img src="assets/whatsapp-logo.png" alt="" style="width: 14px; height: 14px;">
-          Scrivici su Whatsapp
-        </a>
+           style="color: var(--color-whatsapp); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; font-size: 15px;">Scrivici su WhatsApp al 030 9826416</a>
       </div>
       
     </div>
@@ -686,9 +768,7 @@ Ultima modifica: 10/05/2026
       <div class="card">
         <span class="material-symbols-outlined" style="font-size: 40px; color: var(--color-primary); margin-bottom: 16px;">health_and_safety</span>
         <h3 style="margin-bottom: 16px;">Pacchetto di prevenzione</h3>
-        <p style="color: var(--color-outline); margin-bottom: 20px;">
-          Il primo accesso al percorso HolDent prevede una visita conoscitiva con il team clinico, un esame visivo completo e una seduta di igiene professionale. La prevenzione è il punto di partenza di ogni piano di cura.
-        </p>
+        <p style="color: var(--color-outline); margin-bottom: 20px;">Il primo accesso al percorso HolDent prevede una visita conoscitiva con il team clinico, un esame visivo completo e una seduta di igiene professionale. La prevenzione è il punto di partenza di ogni piano di cura.</p>
         <ul style="list-style: none; padding: 0; margin: 0;">
           <li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 12px;">
             <span class="material-symbols-outlined" style="font-size: 16px; color: var(--color-primary); margin-top: 2px;">check_circle</span>
@@ -825,7 +905,7 @@ Ultima modifica: 10/05/2026
       <div class="timeline-step">
         <div class="timeline-number">1</div>
         <h4 style="margin-bottom: 12px;">Ci contatti su WhatsApp o telefono</h4>
-        <p style="color: var(--color-outline); font-size: 14px;">Scegli il canale che preferisci. Su WhatsApp scrivi che sei dipendente Questura. Al telefono lo dici alla segreteria.</p>
+        <p style="color: var(--color-outline); font-size: 14px;">Scegli il canale e la sede più comoda — Brescia città o Corte Franca. Su WhatsApp specifica che sei dipendente Questura.</p>
       </div>
       
       <div class="timeline-step">
@@ -861,36 +941,34 @@ Ultima modifica: 10/05/2026
       <h2 style="margin-bottom: 16px;">Hai domande sulla tessera? Scrivici o chiamaci.</h2>
       
       <p class="body-l" style="color: var(--color-outline); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
-        La segreteria risponde in giornata su WhatsApp. Per parlare direttamente con la clinica, chiama il numero qui sotto. Nessun form da compilare, nessun callback automatico — risponde una persona.
+        La segreteria risponde in giornata su WhatsApp. Per parlare direttamente con la clinica, scegli la sede più comoda. <strong>La tessera vale indistintamente per entrambe.</strong> Nessun form da compilare, nessun callback automatico — risponde una persona.
       </p>
       
       <!-- CTA group -->
       <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px;">
         
         <!-- CTA WhatsApp -->
-        <a href="https://wa.me/393792022228?text=Salve%2C%20sono%20un%20dipendente%20della%20Questura%20di%20Brescia%20e%20vorrei%20informazioni%20sulla%20convenzione%20HolDent." 
-           target="_blank"
-           rel="noopener"
-           onclick="trackCTA('whatsapp', 'cta_finale')"
+        <button onclick="openModal('whatsapp', 'cta_finale')"
+           aria-haspopup="dialog"
            class="whatsapp-glow"
-           style="background: var(--color-whatsapp); color: white; padding: 20px 32px; border-radius: 9999px; font-weight: 700; font-size: 18px; text-decoration: none; display: inline-flex; flex-direction: column; align-items: center; gap: 4px; transition: all 200ms ease; min-width: 280px;">
+           style="background: var(--color-whatsapp); color: white; padding: 20px 32px; border-radius: 9999px; font-weight: 700; font-size: 18px; border: none; cursor: pointer; display: inline-flex; flex-direction: column; align-items: center; gap: 4px; transition: all 200ms ease; min-width: 280px;">
           <div style="display: flex; align-items: center; gap: 10px;">
             <img src="assets/whatsapp-logo.png" alt="" style="width: 24px; height: 24px;">
             <span>Scrivici su WhatsApp</span>
           </div>
           <span style="font-size: 13px; font-weight: 400; opacity: 0.85;">Risposta in giornata, anche fuori orario</span>
-        </a>
+        </button>
         
         <!-- CTA Chiama -->
-        <a href="tel:+390302005908" 
-           onclick="trackCTA('call', 'cta_finale')"
-           style="background: white; color: var(--color-primary); border: 2px solid var(--color-primary); padding: 20px 32px; border-radius: 9999px; font-weight: 700; font-size: 18px; text-decoration: none; display: inline-flex; flex-direction: column; align-items: center; gap: 4px; transition: all 200ms ease; min-width: 280px;">
+        <button onclick="openModal('phone', 'cta_finale')"
+           aria-haspopup="dialog"
+           style="background: white; color: var(--color-primary); border: 2px solid var(--color-primary); padding: 20px 32px; border-radius: 9999px; font-weight: 700; font-size: 18px; cursor: pointer; display: inline-flex; flex-direction: column; align-items: center; gap: 4px; transition: all 200ms ease; min-width: 280px;">
           <div style="display: flex; align-items: center; gap: 10px;">
             <span class="material-symbols-outlined" style="font-size: 22px;">call</span>
-            <span>Chiama 030 200 5908</span>
+            <span>Chiama una sede</span>
           </div>
-          <span style="font-size: 13px; font-weight: 400; color: var(--color-outline);">Lun-Ven 9:00–19:00 · Sab 9:00–13:00</span>
-        </a>
+          <span style="font-size: 13px; font-weight: 400; color: var(--color-outline);">Scegli tra le due sedi</span>
+        </button>
         
       </div>
       
@@ -962,7 +1040,7 @@ Ultima modifica: 10/05/2026
           <span class="material-symbols-outlined faq-icon">expand_more</span>
         </button>
         <div class="faq-answer">
-          <p>Ci contatti su WhatsApp o al numero 030 200 5908. Alla prima visita presenti un documento che attesti l'appartenenza alla Questura (tesserino di servizio o equivalente) e la tessera viene attivata in reception.</p>
+          <p>Ci contatti su WhatsApp o per telefono — scegli tu se preferisci la sede di Brescia o Corte Franca. Alla prima visita presenti un documento che attesti l'appartenenza alla Questura (tesserino di servizio o equivalente) e la tessera viene attivata in reception.</p>
         </div>
       </div>
       
@@ -1020,10 +1098,52 @@ Ultima modifica: 10/05/2026
       <div>
         <h4 style="margin-bottom: 16px; font-size: 16px;">Le nostre sedi</h4>
         <div style="color: rgba(255,255,255,0.7); font-size: 14px; line-height: 1.8;">
-          <p><strong style="color: white;">Clinica Gemini</strong><br>
-          Via Conicchio 19, 25136 Brescia (BS)</p>
-          <p style="margin-top: 16px;"><strong style="color: white;">Clinica Pentagon</strong><br>
-          Via Roma 78, 25040 Corte Franca (BS)</p>
+          
+          <!-- Clinica Gemini -->
+          <div style="margin-bottom: 24px;">
+            <p style="margin-bottom: 8px;"><strong style="color: white;">Clinica dentale Gemini</strong><br>
+            Via Conicchio, 19 – 25136 Brescia (BS)</p>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px;">
+              <a href="tel:+390302005908" 
+                 onclick="trackCTA('call', 'footer', 'gemini')"
+                 style="color: white; text-decoration: none; font-size: 13px; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; padding: 6px 12px; background: rgba(255,255,255,0.15); border-radius: 6px; transition: all 200ms ease;">
+                <span class="material-symbols-outlined" style="font-size: 14px;">call</span>
+                030 200 5908
+              </a>
+              <a href="https://wa.me/393339295958?text=Salve%2C%20sono%20un%20dipendente%20della%20Questura%20di%20Brescia%20e%20vorrei%20informazioni%20sulla%20convenzione%20HolDent." 
+                 target="_blank"
+                 rel="noopener"
+                 onclick="trackCTA('whatsapp', 'footer', 'gemini')"
+                 style="color: white; text-decoration: none; font-size: 13px; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; padding: 6px 12px; background: var(--color-whatsapp); border-radius: 6px; transition: all 200ms ease;">
+                <img src="assets/whatsapp-logo.png" alt="" style="width: 12px; height: 12px;">
+                WhatsApp
+              </a>
+            </div>
+          </div>
+          
+          <!-- Clinica Pentagon -->
+          <div>
+            <p style="margin-bottom: 8px;"><strong style="color: white;">Clinica dentale Pentagon</strong><br>
+            Via Roma 78 – 25040 Corte Franca (BS)<br>
+            C/0 Centro Commerciale "Le Torbiere"</p>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px;">
+              <a href="tel:+390309826416" 
+                 onclick="trackCTA('call', 'footer', 'pentagon')"
+                 style="color: white; text-decoration: none; font-size: 13px; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; padding: 6px 12px; background: rgba(255,255,255,0.15); border-radius: 6px; transition: all 200ms ease;">
+                <span class="material-symbols-outlined" style="font-size: 14px;">call</span>
+                030 982 6416
+              </a>
+              <a href="https://wa.me/393792022228?text=Salve%2C%20sono%20un%20dipendente%20della%20Questura%20di%20Brescia%20e%20vorrei%20informazioni%20sulla%20convenzione%20HolDent." 
+                 target="_blank"
+                 rel="noopener"
+                 onclick="trackCTA('whatsapp', 'footer', 'pentagon')"
+                 style="color: white; text-decoration: none; font-size: 13px; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; padding: 6px 12px; background: var(--color-whatsapp); border-radius: 6px; transition: all 200ms ease;">
+                <img src="assets/whatsapp-logo.png" alt="" style="width: 12px; height: 12px;">
+                WhatsApp
+              </a>
+            </div>
+          </div>
+          
         </div>
       </div>
       
@@ -1067,7 +1187,70 @@ Ultima modifica: 10/05/2026
 </footer>
 
 <script>
-// ============ FAQ ACCORDION ============
+// ============ MODAL MANAGEMENT ============
+let activeModalTrigger = null;
+
+function openModal(type, source) {
+  const modalId = type === 'whatsapp' ? 'modalWhatsApp' : 'modalPhone';
+  const modal = document.getElementById(modalId);
+  
+  if (!modal) return;
+  
+  activeModalTrigger = document.activeElement;
+  
+  modal.classList.add('active');
+  document.body.classList.add('modal-open');
+  
+  // Track modal open event
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'picker_open', {
+      'partnership_id': 'QUEST2026',
+      'tipo': type,
+      'sorgente': source
+    });
+  }
+  
+  // Focus first card
+  setTimeout(() => {
+    const firstCard = modal.querySelector('.sede-card');
+    if (firstCard) firstCard.focus();
+  }, 100);
+}
+
+function closeModal(type, clinica) {
+  const modalId = type === 'whatsapp' ? 'modalWhatsApp' : 'modalPhone';
+  const modal = document.getElementById(modalId);
+  
+  if (!modal) return;
+  
+  modal.classList.remove('active');
+  document.body.classList.remove('modal-open');
+  
+  // Track selection if clinica is provided
+  if (clinica) {
+    trackCTA(type, 'picker', clinica);
+  }
+  
+  // Restore focus
+  if (activeModalTrigger) {
+    activeModalTrigger.focus();
+    activeModalTrigger = null;
+  }
+}
+
+// ============ CTA TRACKING ============
+function trackCTA(type, source, clinica) {
+  if (typeof gtag !== 'undefined') {
+    const eventName = type === 'whatsapp' ? 'cta_click_whatsapp' : 'cta_click_call';
+    gtag('event', eventName, {
+      'partnership_id': 'QUEST2026',
+      'clinica': clinica || '',
+      'sorgente': source
+    });
+  }
+}
+
+// ============ DOM READY ============
 document.addEventListener('DOMContentLoaded', function() {
   const faqButtons = document.querySelectorAll('.faq-question');
   
@@ -1091,15 +1274,33 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
-  // ============ CTA TRACKING ============
-  function trackCTA(type, location) {
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'cta_click_' + type, {
-        'partnership_id': 'QUEST2026',
-        'location': location
-      });
-    }
+  // Close modal on overlay click
+  const modalWhatsApp = document.getElementById('modalWhatsApp');
+  const modalPhone = document.getElementById('modalPhone');
+  
+  if (modalWhatsApp) {
+    modalWhatsApp.addEventListener('click', function(e) {
+      if (e.target === this) closeModal('whatsapp');
+    });
   }
+  
+  if (modalPhone) {
+    modalPhone.addEventListener('click', function(e) {
+      if (e.target === this) closeModal('phone');
+    });
+  }
+  
+  // Close modal on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      if (modalWhatsApp && modalWhatsApp.classList.contains('active')) {
+        closeModal('whatsapp');
+      }
+      if (modalPhone && modalPhone.classList.contains('active')) {
+        closeModal('phone');
+      }
+    }
+  });
   
   // ============ WHATSAPP TOOLTIP MOBILE ============
   if (window.innerWidth < 768) {
@@ -1113,12 +1314,14 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // ============ WHATSAPP STICKY PULSE ============
   const whatsappSticky = document.querySelector('.whatsapp-sticky');
-  setInterval(function() {
-    whatsappSticky.style.transform = 'scale(1.05)';
-    setTimeout(function() {
-      whatsappSticky.style.transform = 'scale(1)';
-    }, 200);
-  }, 5000);
+  if (whatsappSticky) {
+    setInterval(function() {
+      whatsappSticky.style.transform = 'scale(1.05)';
+      setTimeout(function() {
+        whatsappSticky.style.transform = 'scale(1)';
+      }, 200);
+    }, 5000);
+  }
   
 
   
@@ -1168,6 +1371,106 @@ document.addEventListener('DOMContentLoaded', function() {
   // });
   // gtag('event', 'page_view', {'partnership_id': 'QUEST2026'});
 </script>
+
+</body>
+</html>
+
+<!-- ============ MODAL PICKER WHATSAPP ============ -->
+<div id="modalWhatsApp" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalWhatsAppTitle">
+  <div class="modal-card" onclick="event.stopPropagation()">
+    
+    <div style="text-align: center; margin-bottom: 24px;">
+      <img src="assets/whatsapp-logo.png" alt="" style="width: 32px; height: 32px; margin: 0 auto 16px;">
+      <h3 id="modalWhatsAppTitle" style="margin-bottom: 8px;">Quale sede vuoi contattare?</h3>
+      <p class="body-s" style="color: var(--color-outline);">Scegli la clinica più comoda — la tessera Questura vale per entrambe.</p>
+    </div>
+    
+    <!-- Card Gemini -->
+    <a href="https://wa.me/393339295958?text=Salve%2C%20sono%20un%20dipendente%20della%20Questura%20di%20Brescia%20e%20vorrei%20informazioni%20sulla%20convenzione%20HolDent."
+       target="_blank"
+       rel="noopener"
+       class="sede-card"
+       onclick="closeModal('whatsapp', 'gemini')"
+       style="margin-bottom: 12px;">
+      <span class="material-symbols-outlined sede-card-icon" style="font-size: 24px; color: var(--color-primary);">location_city</span>
+      <div class="sede-card-content">
+        <div class="overline" style="color: var(--color-primary); margin-bottom: 4px;">Sede urbana</div>
+        <h4 style="margin-bottom: 4px;">Clinica Gemini — Brescia</h4>
+        <p class="caption" style="color: var(--color-outline); margin-bottom: 4px;">Via Conicchio 19, 25136 Brescia</p>
+        <p class="caption" style="color: var(--color-whatsapp); font-weight: 600;">Scrivi su WhatsApp · +39 333 929 5958</p>
+      </div>
+      <span class="material-symbols-outlined sede-card-arrow" style="font-size: 18px;">arrow_forward</span>
+    </a>
+    
+    <!-- Card Pentagon -->
+    <a href="https://wa.me/393792022228?text=Salve%2C%20sono%20un%20dipendente%20della%20Questura%20di%20Brescia%20e%20vorrei%20informazioni%20sulla%20convenzione%20HolDent."
+       target="_blank"
+       rel="noopener"
+       class="sede-card"
+       onclick="closeModal('whatsapp', 'pentagon')">
+      <span class="material-symbols-outlined sede-card-icon" style="font-size: 24px; color: var(--color-secondary);">landscape</span>
+      <div class="sede-card-content">
+        <div class="overline" style="color: var(--color-secondary); margin-bottom: 4px;">Sede Franciacorta</div>
+        <h4 style="margin-bottom: 4px;">Clinica Pentagon — Corte Franca</h4>
+        <p class="caption" style="color: var(--color-outline); margin-bottom: 4px;">Via Roma 78, 25040 Corte Franca</p>
+        <p class="caption" style="color: var(--color-whatsapp); font-weight: 600;">Scrivi su WhatsApp · +39 379 202 2228</p>
+      </div>
+      <span class="material-symbols-outlined sede-card-arrow" style="font-size: 18px;">arrow_forward</span>
+    </a>
+    
+    <button onclick="closeModal('whatsapp')" style="width: 100%; margin-top: 16px; background: none; border: none; color: var(--color-outline); font-size: 15px; font-weight: 500; padding: 12px; cursor: pointer;">
+      Annulla
+    </button>
+    
+  </div>
+</div>
+
+<!-- ============ MODAL PICKER PHONE ============ -->
+<div id="modalPhone" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalPhoneTitle">
+  <div class="modal-card" onclick="event.stopPropagation()">
+    
+    <div style="text-align: center; margin-bottom: 24px;">
+      <span class="material-symbols-outlined" style="font-size: 32px; color: var(--color-primary); margin: 0 auto 16px; display: block;">call</span>
+      <h3 id="modalPhoneTitle" style="margin-bottom: 8px;">Quale sede vuoi chiamare?</h3>
+      <p class="body-s" style="color: var(--color-outline);">Scegli la clinica più comoda — la tessera Questura vale per entrambe.</p>
+      <p class="caption" style="color: var(--color-outline); margin-top: 8px;">Lun-Ven 9:00–19:00 · Sab 9:00–13:00</p>
+    </div>
+    
+    <!-- Card Gemini -->
+    <a href="tel:+390302005908"
+       class="sede-card"
+       onclick="closeModal('phone', 'gemini')"
+       style="margin-bottom: 12px;">
+      <span class="material-symbols-outlined sede-card-icon" style="font-size: 24px; color: var(--color-primary);">location_city</span>
+      <div class="sede-card-content">
+        <div class="overline" style="color: var(--color-primary); margin-bottom: 4px;">Sede urbana</div>
+        <h4 style="margin-bottom: 4px;">Clinica Gemini — Brescia</h4>
+        <p class="caption" style="color: var(--color-outline); margin-bottom: 4px;">Via Conicchio 19, 25136 Brescia</p>
+        <p class="caption" style="color: var(--color-primary); font-weight: 600;">Chiama · 030 200 5908</p>
+      </div>
+      <span class="material-symbols-outlined sede-card-arrow" style="font-size: 18px;">arrow_forward</span>
+    </a>
+    
+    <!-- Card Pentagon -->
+    <a href="tel:+390309826416"
+       class="sede-card"
+       onclick="closeModal('phone', 'pentagon')">
+      <span class="material-symbols-outlined sede-card-icon" style="font-size: 24px; color: var(--color-secondary);">landscape</span>
+      <div class="sede-card-content">
+        <div class="overline" style="color: var(--color-secondary); margin-bottom: 4px;">Sede Franciacorta</div>
+        <h4 style="margin-bottom: 4px;">Clinica Pentagon — Corte Franca</h4>
+        <p class="caption" style="color: var(--color-outline); margin-bottom: 4px;">Via Roma 78, 25040 Corte Franca</p>
+        <p class="caption" style="color: var(--color-secondary); font-weight: 600;">Chiama · 030 982 6416</p>
+      </div>
+      <span class="material-symbols-outlined sede-card-arrow" style="font-size: 18px;">arrow_forward</span>
+    </a>
+    
+    <button onclick="closeModal('phone')" style="width: 100%; margin-top: 16px; background: none; border: none; color: var(--color-outline); font-size: 15px; font-weight: 500; padding: 12px; cursor: pointer;">
+      Annulla
+    </button>
+    
+  </div>
+</div>
 
 </body>
 </html>
