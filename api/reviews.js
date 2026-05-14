@@ -60,6 +60,11 @@ export default async function handler(req, res) {
       rating: data.result.rating,
       total: data.result.user_ratings_total,
       url: data.result.url,
+      place_id: placeId,
+      // Deep link al form di scrittura recensione su Google
+      write_review_url: 'https://search.google.com/local/writereview?placeid=' + placeId,
+      // Deep link alla lista completa recensioni
+      all_reviews_url: 'https://search.google.com/local/reviews?placeid=' + placeId,
       reviews: (data.result.reviews || []).map((r) => ({
         author_name: r.author_name,
         profile_photo_url: r.profile_photo_url,
