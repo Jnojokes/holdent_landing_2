@@ -1,0 +1,9 @@
+{
+  "name": "holdent-convenzione-pa",
+  "version": "1.0.0",
+  "description": "Landing page convenzione Dipendenti PA × HolDent con widget recensioni Google",
+  "private": true,
+  "engines": {
+    "node": ">=18.x"
+  }
+}
