@@ -794,6 +794,18 @@ Ultima modifica: 14/05/2026
     flex-shrink: 0;
   }
   
+  .reviews-author-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 15px;
+    font-family: var(--font-headline);
+    letter-spacing: 0.5px;
+    user-select: none;
+  }
+  
   .reviews-author-info {
     flex: 1;
     min-width: 0;
@@ -1763,16 +1775,18 @@ function renderReviews(data, container) {
   html += '      <div class="reviews-score-line">';
   html += '        <span class="reviews-stars" aria-hidden="true">' + starsStr + '</span>';
   html += '        <span class="reviews-rating">' + rating.toFixed(1) + '</span>';
-  if (data.url) {
-    html += '        <a href="' + escapeHtml(data.url) + '" target="_blank" rel="noopener" class="reviews-total">(' + total + ' recensioni)</a>';
+  const allReviewsUrl = data.all_reviews_url || data.url;
+  if (allReviewsUrl) {
+    html += '        <a href="' + escapeHtml(allReviewsUrl) + '" target="_blank" rel="noopener" class="reviews-total">(' + total + ' recensioni su Google)</a>';
   } else {
     html += '        <span class="reviews-total">(' + total + ' recensioni)</span>';
   }
   html += '      </div>';
   html += '    </div>';
   html += '  </div>';
-  if (data.url) {
-    html += '  <a href="' + escapeHtml(data.url) + '" target="_blank" rel="noopener" class="reviews-cta-write">';
+  const writeReviewUrl = data.write_review_url;
+  if (writeReviewUrl) {
+    html += '  <a href="' + escapeHtml(writeReviewUrl) + '" target="_blank" rel="noopener" class="reviews-cta-write">';
     html += '    <span class="material-symbols-outlined" style="font-size: 16px;">edit</span>';
     html += '    Scrivi una recensione';
     html += '  </a>';
@@ -1793,10 +1807,12 @@ function renderReviews(data, container) {
       
       html += '<li class="reviews-item">';
       html += '  <div class="reviews-author">';
+      const initials = getInitials(r.author_name || 'Anonimo');
+      const bgColor = getAvatarColor(r.author_name || 'A');
       if (photo) {
-        html += '    <img class="reviews-author-img" src="' + escapeHtml(photo) + '" alt="" width="44" height="44" loading="lazy" referrerpolicy="no-referrer">';
+        html += '    <img class="reviews-author-img" src="' + escapeHtml(photo) + '" alt="" width="44" height="44" loading="lazy" referrerpolicy="no-referrer" onerror="this.outerHTML=\'<div class=&quot;reviews-author-img reviews-author-fallback&quot; style=&quot;background:' + bgColor + ';&quot;>' + escapeHtml(initials) + '</div>\'">';
       } else {
-        html += '    <div class="reviews-author-img" aria-hidden="true"></div>';
+        html += '    <div class="reviews-author-img reviews-author-fallback" style="background:' + bgColor + ';">' + escapeHtml(initials) + '</div>';
       }
       html += '    <div class="reviews-author-info">';
       html += '      <div class="reviews-author-name">' + escapeHtml(r.author_name || 'Anonimo') + '</div>';
@@ -1839,6 +1855,24 @@ function escapeHtml(str) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
+}
+
+function getInitials(name) {
+  if (!name) return '?';
+  const parts = String(name).trim().split(/\s+/);
+  if (parts.length === 1) return parts[0].charAt(0).toUpperCase();
+  return (parts[0].charAt(0) + parts[parts.length - 1].charAt(0)).toUpperCase();
+}
+
+function getAvatarColor(name) {
+  // Palette coerente con il brand HolDent
+  const colors = ['#0052CC', '#06B6D4', '#3B82F6', '#0EA5E9', '#6366F1', '#0891B2'];
+  let hash = 0;
+  const str = String(name || 'A');
+  for (let i = 0; i < str.length; i++) {
+    hash = str.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  return colors[Math.abs(hash) % colors.length];
 }
 </script>
 
