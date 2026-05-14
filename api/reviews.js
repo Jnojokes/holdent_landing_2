@@ -2,41 +2,51 @@
 // Vercel Serverless Function — proxy verso Google Places API
 // Tiene la GOOGLE_PLACES_API_KEY lato server (non esposta nel browser).
 
-const PLACE_IDS = {
-  gemini: process.env.GOOGLE_PLACE_ID_GEMINI,
-  pentagon: process.env.GOOGLE_PLACE_ID_PENTAGON,
-};
+const VALID_CLINICS = ['gemini', 'pentagon'];
 
-// Cache in-memory per istanza serverless (sopravvive tra invocazioni warm).
-// Per cache più robusta usiamo anche l'header Cache-Control verso il CDN Vercel.
 const memCache = new Map();
 const CACHE_TTL_MS = 86400 * 1000; // 24h
 
 export default async function handler(req, res) {
-  const clinic = String(req.query.clinic || 'gemini').toLowerCase();
-  const placeId = PLACE_IDS[clinic];
+  const clinic = String(req.query.clinic || 'gemini').toLowerCase().trim();
 
-  if (!placeId) {
+  // 1) Validazione parametro clinic
+  if (!VALID_CLINICS.includes(clinic)) {
     return res.status(400).json({
       error: 'invalid_clinic',
-      message: 'Clinic must be one of: ' + Object.keys(PLACE_IDS).join(', '),
+      message: 'Parametro clinic non valido. Usa: ' + VALID_CLINICS.join(', '),
+      received: clinic,
     });
   }
 
+  // 2) Verifica chiave API configurata
   if (!process.env.GOOGLE_PLACES_API_KEY) {
     return res.status(500).json({
       error: 'missing_api_key',
-      message: 'GOOGLE_PLACES_API_KEY non configurata nelle env vars Vercel.',
+      message: 'GOOGLE_PLACES_API_KEY non configurata. Aggiungila in Vercel -> Settings -> Environment Variables e fai redeploy.',
     });
   }
 
-  // Check in-memory cache
+  // 3) Verifica place_id configurato per la clinica richiesta
+  const envVarName = 'GOOGLE_PLACE_ID_' + clinic.toUpperCase();
+  const placeId = process.env[envVarName];
+
+  if (!placeId) {
+    return res.status(500).json({
+      error: 'missing_place_id',
+      message: 'Env var ' + envVarName + ' non configurata o vuota. Aggiungila in Vercel -> Settings -> Environment Variables e fai redeploy.',
+      missing_env: envVarName,
+    });
+  }
+
+  // 4) Check cache in-memory
   const cached = memCache.get(clinic);
   if (cached && Date.now() < cached.expires) {
     res.setHeader('Cache-Control', 's-maxage=86400, stale-while-revalidate=43200');
     return res.status(200).json(cached.data);
   }
 
+  // 5) Chiamata a Google Places API
   try {
     const url = new URL('https://maps.googleapis.com/maps/api/place/details/json');
     url.searchParams.set('place_id', placeId);
@@ -49,9 +59,17 @@ export default async function handler(req, res) {
     const data = await response.json();
 
     if (data.status !== 'OK') {
-      return res.status(500).json({
-        error: data.status,
-        message: data.error_message || 'Google Places API error',
+      return res.status(502).json({
+        error: 'google_api_error',
+        google_status: data.status,
+        message: data.error_message || ('Google Places ha risposto con status: ' + data.status),
+        hint: data.status === 'REQUEST_DENIED'
+          ? 'Verifica che la GOOGLE_PLACES_API_KEY sia valida e che la "Places API" sia abilitata nel progetto Google Cloud.'
+          : data.status === 'INVALID_REQUEST'
+          ? 'Probabilmente il place_id non e valido.'
+          : data.status === 'NOT_FOUND'
+          ? 'Il place_id non corrisponde a nessun posto su Google.'
+          : undefined,
       });
     }
 
@@ -61,9 +79,7 @@ export default async function handler(req, res) {
       total: data.result.user_ratings_total,
       url: data.result.url,
       place_id: placeId,
-      // Deep link al form di scrittura recensione su Google
       write_review_url: 'https://search.google.com/local/writereview?placeid=' + placeId,
-      // Deep link alla lista completa recensioni
       all_reviews_url: 'https://search.google.com/local/reviews?placeid=' + placeId,
       reviews: (data.result.reviews || []).map((r) => ({
         author_name: r.author_name,
@@ -77,9 +93,7 @@ export default async function handler(req, res) {
 
     memCache.set(clinic, { data: payload, expires: Date.now() + CACHE_TTL_MS });
 
-    // CDN cache: 24h fresh + 12h stale-while-revalidate
     res.setHeader('Cache-Control', 's-maxage=86400, stale-while-revalidate=43200');
-
     return res.status(200).json(payload);
   } catch (err) {
     console.error('Reviews fetch failed:', err);
