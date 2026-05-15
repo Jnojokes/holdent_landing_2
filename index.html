@@ -6,7 +6,7 @@ Titolo pagina: Convenzione Dipendenti Pubblica Amministrazione × HolDent
 Partnership ID: PA2026
 Codice tracking: PA2026
 Landing versione: WhatsApp/Phone only (NO FORM)
-Ultima modifica: 14/05/2026
+Ultima modifica: 15/05/2026 (Rev 2 — riequilibrio tono umano, sezione "Il modello HolDent", FAQ voce paziente)
 -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -294,6 +294,16 @@ Ultima modifica: 14/05/2026
     object-fit: cover;
   }
   
+  /* Modello HolDent — verbatim statement */
+  .model-statement {
+    font-family: var(--font-headline);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--color-ink);
+    margin-bottom: 32px;
+  }
+  
   /* Timeline */
   .timeline {
     display: flex;
@@ -376,6 +386,10 @@ Ultima modifica: 14/05/2026
     
     h3 {
       font-size: 22px;
+    }
+    
+    .model-statement {
+      font-size: 24px;
     }
     
     .utility-bar {
@@ -629,304 +643,6 @@ Ultima modifica: 14/05/2026
     font-weight: 400;
     color: var(--color-outline);
   }
-  
-  /* ============ GOOGLE REVIEWS WIDGET ============ */
-  .reviews-section {
-    background: var(--color-canvas);
-    padding: 96px 32px;
-  }
-  
-  .reviews-container {
-    max-width: 1280px;
-    margin: 0 auto;
-  }
-  
-  .reviews-tabs {
-    display: inline-flex;
-    background: white;
-    border-radius: 9999px;
-    padding: 6px;
-    box-shadow: 0 4px 14px rgba(10, 22, 40, 0.06);
-    margin: 0 auto 48px;
-  }
-  
-  .reviews-tab-wrapper {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .reviews-tab {
-    background: transparent;
-    border: none;
-    padding: 10px 24px;
-    border-radius: 9999px;
-    font-family: var(--font-body);
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--color-outline);
-    cursor: pointer;
-    transition: all 200ms ease;
-  }
-  
-  .reviews-tab:hover {
-    color: var(--color-ink);
-  }
-  
-  .reviews-tab.active {
-    background: var(--color-primary);
-    color: white;
-  }
-  
-  .reviews-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 16px;
-    padding: 24px 0;
-    margin-bottom: 32px;
-    border-bottom: 1px solid var(--color-alternate);
-  }
-  
-  .reviews-header-left {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-  
-  .reviews-google-icon {
-    width: 40px;
-    height: 40px;
-    flex-shrink: 0;
-  }
-  
-  .reviews-score-block h3 {
-    margin-bottom: 4px;
-    font-size: 22px;
-  }
-  
-  .reviews-score-line {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-  
-  .reviews-stars {
-    color: #fbbc04;
-    font-size: 18px;
-    letter-spacing: 2px;
-  }
-  
-  .reviews-rating {
-    font-weight: 700;
-    color: var(--color-ink);
-    font-size: 18px;
-  }
-  
-  .reviews-total {
-    color: var(--color-outline);
-    font-size: 14px;
-    text-decoration: none;
-  }
-  
-  .reviews-total:hover {
-    color: var(--color-primary);
-    text-decoration: underline;
-  }
-  
-  .reviews-cta-write {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 10px 18px;
-    background: white;
-    border: 1.5px solid var(--color-alternate);
-    border-radius: 9999px;
-    color: var(--color-ink);
-    font-size: 13px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 200ms ease;
-  }
-  
-  .reviews-cta-write:hover {
-    border-color: var(--color-primary);
-    color: var(--color-primary);
-  }
-  
-  .reviews-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 24px;
-    list-style: none;
-    padding: 0;
-  }
-  
-  .reviews-item {
-    background: white;
-    border-radius: 18px;
-    padding: 24px;
-    box-shadow: 0 4px 10px rgba(10, 22, 40, 0.06);
-    transition: all 200ms ease;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-  
-  .reviews-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(10, 22, 40, 0.08);
-  }
-  
-  .reviews-author {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-  }
-  
-  .reviews-author-img {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    object-fit: cover;
-    background: var(--color-alternate);
-    flex-shrink: 0;
-  }
-  
-  .reviews-author-fallback {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: 600;
-    font-size: 15px;
-    font-family: var(--font-headline);
-    letter-spacing: 0.5px;
-    user-select: none;
-  }
-  
-  .reviews-author-info {
-    flex: 1;
-    min-width: 0;
-  }
-  
-  .reviews-author-name {
-    font-weight: 600;
-    color: var(--color-ink);
-    font-size: 15px;
-    margin-bottom: 2px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
-  .reviews-author-meta {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    color: var(--color-outline);
-  }
-  
-  .reviews-author-meta .reviews-stars {
-    font-size: 14px;
-    letter-spacing: 1px;
-  }
-  
-  .reviews-text {
-    font-size: 14px;
-    line-height: 1.6;
-    color: var(--color-ink);
-    margin: 0;
-    display: -webkit-box;
-    -webkit-line-clamp: 6;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-  
-  .reviews-text.expanded {
-    -webkit-line-clamp: unset;
-  }
-  
-  .reviews-readmore {
-    background: none;
-    border: none;
-    color: var(--color-primary);
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    padding: 0;
-    text-align: left;
-    margin-top: -6px;
-  }
-  
-  .reviews-readmore:hover {
-    text-decoration: underline;
-  }
-  
-  .reviews-loading,
-  .reviews-error {
-    text-align: center;
-    padding: 48px 24px;
-    color: var(--color-outline);
-    font-size: 15px;
-  }
-  
-  .reviews-loading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  
-  .reviews-spinner {
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--color-alternate);
-    border-top-color: var(--color-primary);
-    border-radius: 50%;
-    animation: reviews-spin 0.8s linear infinite;
-  }
-  
-  @keyframes reviews-spin {
-    to { transform: rotate(360deg); }
-  }
-  
-  .reviews-attribution {
-    text-align: center;
-    margin-top: 32px;
-    font-size: 13px;
-    color: var(--color-outline);
-  }
-  
-  .reviews-attribution a {
-    color: var(--color-primary);
-    font-weight: 600;
-    text-decoration: none;
-  }
-  
-  @media (max-width: 768px) {
-    .reviews-section {
-      padding: 64px 20px;
-    }
-    
-    .reviews-header {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    
-    .reviews-tabs {
-      width: 100%;
-      max-width: 320px;
-    }
-    
-    .reviews-tab {
-      flex: 1;
-      padding: 10px 16px;
-      font-size: 13px;
-    }
-  }
 </style>
 </head>
 <body>
@@ -979,8 +695,9 @@ Ultima modifica: 14/05/2026
       Convenzione Dipendenti Pubblica Amministrazione × HolDent
     </h1>
     
-    <p class="body-l" style="max-width: 800px; margin: 0 auto 40px; color: var(--color-outline);">
-      La salute orale dei dipendenti della pubblica amministrazione, vicino al lavoro e a casa. Due cliniche del network HolDent — Brescia città e Corte Franca — a disposizione dei dipendenti della PA e delle loro famiglie con una tessera fedeltà dedicata.
+    <p class="body-l" style="max-width: 820px; margin: 0 auto 40px; color: var(--color-outline);">
+      Due cliniche, un solo modo di prendersi cura delle persone.<br>
+      La tessera dedicata ai dipendenti della pubblica amministrazione è il punto di partenza di un percorso costruito con voi — dalla prima visita ai controlli nel tempo, vicino al lavoro e vicino a casa.
     </p>
     
     <div class="cta-hero-group" style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px;">
@@ -1012,11 +729,32 @@ Ultima modifica: 14/05/2026
   </div>
 </section>
 
+<!-- ============ IL MODELLO HOLDENT ============ -->
+<section style="background: var(--color-canvas); padding: 96px 32px;">
+  <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+    
+    <div class="overline" style="color: var(--color-primary); margin-bottom: 24px;">Il modello HolDent</div>
+    
+    <p class="model-statement">
+      Le cliniche HolDent operano attraverso un modello integrato clinica–laboratorio pensato per garantire continuità, pianificazione e supporto nel tempo.
+    </p>
+    
+    <p class="body-l" style="color: var(--color-outline); max-width: 720px; margin: 0 auto;">
+      Il laboratorio odontotecnico interno alla clinica Pentagon lavora a fianco del team clinico di entrambe le sedi: questo significa tempi di rilavorazione più brevi, tracciabilità dei materiali e un piano di cura che resta coerente dalla prima visita ai controlli degli anni successivi.
+    </p>
+    
+  </div>
+</section>
+
 <!-- ============ IL NETWORK HOLDENT ============ -->
 <section style="background: var(--color-alternate); padding: 96px 32px;">
   <div style="max-width: 1280px; margin: 0 auto;">
     
     <h2 style="text-align: center; margin-bottom: 24px;">Il network HolDent in breve</h2>
+    
+    <p class="body-l" style="max-width: 820px; margin: 0 auto 24px; text-align: center; color: var(--color-outline);">
+      Da anni accompagniamo le famiglie del territorio bresciano nella loro salute orale. Il network HolDent nasce dall'idea che ogni paziente meriti continuità — stesso team, stessa cartella, stessa cura, indipendentemente da dove sceglie di farsi visitare.
+    </p>
     
     <p class="body-l" style="max-width: 720px; margin: 0 auto 64px; text-align: center; color: var(--color-outline);">
       Due cliniche complementari nella provincia di Brescia, con stesso protocollo clinico e cartella paziente condivisa.
@@ -1286,40 +1024,63 @@ Chiama 030 9826416</a>
   </div>
 </section>
 
-<!-- ============ GOOGLE REVIEWS ============ -->
-<section class="reviews-section">
-  <div class="reviews-container">
+<!-- ============ FAQ VOCE PAZIENTE ============ -->
+<section style="background: var(--color-alternate); padding: 96px 32px;">
+  <div style="max-width: 900px; margin: 0 auto;">
     
-    <div class="overline" style="color: var(--color-primary); text-align: center; margin-bottom: 16px;">Recensioni verificate</div>
-    <h2 style="text-align: center; margin-bottom: 24px;">Cosa dicono i pazienti</h2>
-    <p class="body-l" style="max-width: 720px; margin: 0 auto 40px; text-align: center; color: var(--color-outline);">
-      Recensioni pubbliche da Google, aggiornate automaticamente. Scegli la sede per leggere le opinioni dei pazienti.
+    <div class="overline" style="color: var(--color-primary); text-align: center; margin-bottom: 16px;">Voce paziente</div>
+    <h2 style="text-align: center; margin-bottom: 24px;">Prima di iniziare — le domande più frequenti dei pazienti</h2>
+    <p class="body-l" style="max-width: 720px; margin: 0 auto 64px; text-align: center; color: var(--color-outline);">
+      Le domande che ci sentiamo fare più spesso, prima ancora di parlare di tessere e percorsi.
     </p>
     
-    <!-- Tabs switch -->
-    <div class="reviews-tab-wrapper">
-      <div class="reviews-tabs" role="tablist" aria-label="Scegli sede recensioni">
-        <button type="button" class="reviews-tab active" data-clinic="gemini" role="tab" aria-selected="true">Clinica Gemini · Brescia</button>
-        <button type="button" class="reviews-tab" data-clinic="pentagon" role="tab" aria-selected="false">Clinica Pentagon · Corte Franca</button>
+    <div id="faq-paziente-list">
+      
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>"Ho paura del dentista."</span>
+          <span class="material-symbols-outlined faq-icon">expand_more</span>
+        </button>
+        <div class="faq-answer">
+          <p>Lo sappiamo, e succede più spesso di quanto si pensi. Per chi vive con apprensione l'idea di una visita, in HolDent il primo appuntamento è strutturato come un incontro conoscitivo: si chiacchiera, si fa l'anamnesi, si guarda — senza alcun trattamento e senza pressione decisionale. Quando indicata, è disponibile la sedazione cosciente, valutata caso per caso con l'équipe specialistica. Se lo desiderate, potete essere accompagnati da una persona di fiducia.</p>
+        </div>
       </div>
-    </div>
-    
-    <!-- Reviews content -->
-    <div id="reviews-content" aria-live="polite">
-      <div class="reviews-loading">
-        <span class="reviews-spinner" aria-hidden="true"></span>
-        <span>Caricamento recensioni…</span>
+      
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>"Posso fare una prima visita senza impegno?"</span>
+          <span class="material-symbols-outlined faq-icon">expand_more</span>
+        </button>
+        <div class="faq-answer">
+          <p>Sì. La prima visita conoscitiva è inclusa nella tessera dedicata e non prevede vincoli di proseguimento. Comprende anamnesi, valutazione clinica e piano di cura scritto: il piano vi viene consegnato per leggerlo con calma a casa, anche insieme alla famiglia, e decidere se e quando proseguire.</p>
+        </div>
       </div>
+      
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>"Quanto tempo richiede il primo appuntamento?"</span>
+          <span class="material-symbols-outlined faq-icon">expand_more</span>
+        </button>
+        <div class="faq-answer">
+          <p>Tipicamente tra i 45 e i 60 minuti. È il tempo che serve per fare un'anamnesi completa, un esame visivo e — se indicata — una valutazione strumentale, oltre a discutere insieme il piano. Per chi non viene dal dentista da molto tempo, o per chi è particolarmente ansioso, la segreteria programma uno slot più lungo, così da non avere fretta.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>"E se non so da dove iniziare?"</span>
+          <span class="material-symbols-outlined faq-icon">expand_more</span>
+        </button>
+        <div class="faq-answer">
+          <p>È esattamente la situazione per cui esiste la prima visita conoscitiva. Non serve sapere "cosa fare": l'invito è venire, raccontarci com'è la vostra situazione, e fare il punto con il team. Se preferite chiarirvi le idee prima, la segreteria della clinica che scegliete (Viktoriya per Gemini, Giulia per Pentagon) è disponibile al telefono o via WhatsApp per orientarvi.</p>
+        </div>
+      </div>
+      
     </div>
-    
-    <p class="reviews-attribution">
-      Powered by <a href="https://www.google.com/maps" target="_blank" rel="noopener">Google</a>
-    </p>
-    
   </div>
 </section>
 
-<!-- ============ FAQ ============ -->
+<!-- ============ FAQ TESSERA ============ -->
 <section style="background: var(--color-canvas); padding: 96px 32px;">
   <div style="max-width: 900px; margin: 0 auto;">
     
@@ -1681,205 +1442,7 @@ document.addEventListener('DOMContentLoaded', function() {
       whatsappButton.style.transform = 'translateY(0)';
     }
   });
-  
-  // ============ GOOGLE REVIEWS WIDGET ============
-  initGoogleReviews();
 });
-
-// ============ GOOGLE REVIEWS LOGIC ============
-const REVIEWS_CACHE = {};
-
-function initGoogleReviews() {
-  const tabs = document.querySelectorAll('.reviews-tab');
-  if (!tabs.length) return;
-  
-  tabs.forEach(tab => {
-    tab.addEventListener('click', function() {
-      const clinic = this.dataset.clinic;
-      
-      // Update tab states
-      tabs.forEach(t => {
-        t.classList.remove('active');
-        t.setAttribute('aria-selected', 'false');
-      });
-      this.classList.add('active');
-      this.setAttribute('aria-selected', 'true');
-      
-      // Load reviews
-      loadReviews(clinic);
-      
-      // Track tab switch
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'reviews_tab_switch', {
-          'partnership_id': 'PA2026',
-          'clinica': clinic
-        });
-      }
-    });
-  });
-  
-  // Initial load
-  loadReviews('gemini');
-}
-
-function loadReviews(clinic) {
-  const container = document.getElementById('reviews-content');
-  if (!container) return;
-  
-  // Show cached if available
-  if (REVIEWS_CACHE[clinic]) {
-    renderReviews(REVIEWS_CACHE[clinic], container);
-    return;
-  }
-  
-  // Show loading state
-  container.innerHTML = '<div class="reviews-loading"><span class="reviews-spinner" aria-hidden="true"></span><span>Caricamento recensioni…</span></div>';
-  
-  fetch('/api/reviews?clinic=' + encodeURIComponent(clinic))
-    .then(function(r) {
-      return r.json().then(function(body) {
-        return { ok: r.ok, status: r.status, body: body };
-      });
-    })
-    .then(function(result) {
-      if (!result.ok || result.body.error) {
-        // Errore strutturato dall'API — logga dettagli in console per debug
-        console.error('[Reviews API]', result.status, result.body);
-        var diagnostic = result.body.message || result.body.error || 'Errore sconosciuto';
-        throw new Error(diagnostic);
-      }
-      REVIEWS_CACHE[clinic] = result.body;
-      renderReviews(result.body, container);
-    })
-    .catch(function(err) {
-      console.error('Reviews load failed:', err.message);
-      container.innerHTML = '<div class="reviews-error">Recensioni momentaneamente non disponibili. <a href="https://www.google.com/maps" target="_blank" rel="noopener" style="color: var(--color-primary); font-weight: 600;">Visualizzale direttamente su Google Maps</a>.</div>';
-    });
-}
-
-function renderReviews(data, container) {
-  const rating = typeof data.rating === 'number' ? data.rating : 0;
-  const total = data.total || 0;
-  const reviews = Array.isArray(data.reviews) ? data.reviews : [];
-  
-  const fullStars = Math.round(rating);
-  const starsStr = '★'.repeat(fullStars) + '☆'.repeat(Math.max(0, 5 - fullStars));
-  
-  let html = '';
-  
-  // Header
-  html += '<div class="reviews-header">';
-  html += '  <div class="reviews-header-left">';
-  html += '    <svg class="reviews-google-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">';
-  html += '      <path fill="#4285F4" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>';
-  html += '      <path fill="#34A853" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>';
-  html += '      <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>';
-  html += '      <path fill="#EA4335" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>';
-  html += '    </svg>';
-  html += '    <div class="reviews-score-block">';
-  html += '      <h3>' + escapeHtml(data.name || 'HolDent') + '</h3>';
-  html += '      <div class="reviews-score-line">';
-  html += '        <span class="reviews-stars" aria-hidden="true">' + starsStr + '</span>';
-  html += '        <span class="reviews-rating">' + rating.toFixed(1) + '</span>';
-  const allReviewsUrl = data.all_reviews_url || data.url;
-  if (allReviewsUrl) {
-    html += '        <a href="' + escapeHtml(allReviewsUrl) + '" target="_blank" rel="noopener" class="reviews-total">(' + total + ' recensioni su Google)</a>';
-  } else {
-    html += '        <span class="reviews-total">(' + total + ' recensioni)</span>';
-  }
-  html += '      </div>';
-  html += '    </div>';
-  html += '  </div>';
-  const writeReviewUrl = data.write_review_url;
-  if (writeReviewUrl) {
-    html += '  <a href="' + escapeHtml(writeReviewUrl) + '" target="_blank" rel="noopener" class="reviews-cta-write">';
-    html += '    <span class="material-symbols-outlined" style="font-size: 16px;">edit</span>';
-    html += '    Scrivi una recensione';
-    html += '  </a>';
-  }
-  html += '</div>';
-  
-  // Reviews list
-  if (reviews.length === 0) {
-    html += '<div class="reviews-error">Nessuna recensione disponibile al momento.</div>';
-  } else {
-    html += '<ul class="reviews-list">';
-    reviews.forEach(function(r, i) {
-      const rStars = Math.max(0, Math.min(5, r.rating || 0));
-      const rStarsStr = '★'.repeat(rStars) + '☆'.repeat(5 - rStars);
-      const photo = r.profile_photo_url || '';
-      const text = r.text || '';
-      const needsExpand = text.length > 240;
-      
-      html += '<li class="reviews-item">';
-      html += '  <div class="reviews-author">';
-      const initials = getInitials(r.author_name || 'Anonimo');
-      const bgColor = getAvatarColor(r.author_name || 'A');
-      if (photo) {
-        html += '    <img class="reviews-author-img" src="' + escapeHtml(photo) + '" alt="" width="44" height="44" loading="lazy" referrerpolicy="no-referrer" onerror="this.outerHTML=\'<div class=&quot;reviews-author-img reviews-author-fallback&quot; style=&quot;background:' + bgColor + ';&quot;>' + escapeHtml(initials) + '</div>\'">';
-      } else {
-        html += '    <div class="reviews-author-img reviews-author-fallback" style="background:' + bgColor + ';">' + escapeHtml(initials) + '</div>';
-      }
-      html += '    <div class="reviews-author-info">';
-      html += '      <div class="reviews-author-name">' + escapeHtml(r.author_name || 'Anonimo') + '</div>';
-      html += '      <div class="reviews-author-meta">';
-      html += '        <span class="reviews-stars" aria-label="' + rStars + ' stelle su 5">' + rStarsStr + '</span>';
-      if (r.relative_time_description) {
-        html += '        <span>· ' + escapeHtml(r.relative_time_description) + '</span>';
-      }
-      html += '      </div>';
-      html += '    </div>';
-      html += '  </div>';
-      html += '  <p class="reviews-text" id="rev-text-' + i + '">' + escapeHtml(text) + '</p>';
-      if (needsExpand) {
-        html += '  <button type="button" class="reviews-readmore" data-target="rev-text-' + i + '">Leggi tutto</button>';
-      }
-      html += '</li>';
-    });
-    html += '</ul>';
-  }
-  
-  container.innerHTML = html;
-  
-  // Bind "Leggi tutto" buttons
-  container.querySelectorAll('.reviews-readmore').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      const target = document.getElementById(this.dataset.target);
-      if (target) {
-        target.classList.toggle('expanded');
-        this.textContent = target.classList.contains('expanded') ? 'Mostra meno' : 'Leggi tutto';
-      }
-    });
-  });
-}
-
-function escapeHtml(str) {
-  if (str === null || str === undefined) return '';
-  return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
-}
-
-function getInitials(name) {
-  if (!name) return '?';
-  const parts = String(name).trim().split(/\s+/);
-  if (parts.length === 1) return parts[0].charAt(0).toUpperCase();
-  return (parts[0].charAt(0) + parts[parts.length - 1].charAt(0)).toUpperCase();
-}
-
-function getAvatarColor(name) {
-  // Palette coerente con il brand HolDent
-  const colors = ['#0052CC', '#06B6D4', '#3B82F6', '#0EA5E9', '#6366F1', '#0891B2'];
-  let hash = 0;
-  const str = String(name || 'A');
-  for (let i = 0; i < str.length; i++) {
-    hash = str.charCodeAt(i) + ((hash << 5) - hash);
-  }
-  return colors[Math.abs(hash) % colors.length];
-}
 </script>
 
 <!-- GA4 Tracking (placeholder) -->
