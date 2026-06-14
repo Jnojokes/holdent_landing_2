@@ -29,19 +29,8 @@
 
   .vids{display:flex;flex-wrap:wrap;gap:26px;align-items:flex-start;}
   .vid{width:328px;max-width:100%;}
-  .frame{position:relative;width:100%;}
-  .frame.cover{aspect-ratio:1/1.15;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fafafa;}
-  .igembed{width:100%;}
-  .frame.cover .igembed{position:absolute;inset:0;z-index:1;overflow:hidden;}
-  /* placeholder minimale chiaro: visibile finché l'embed non si carica davvero */
-  .ph{display:none;}
-  .frame.cover .ph{display:flex;position:absolute;inset:0;z-index:2;flex-direction:column;align-items:center;
-    justify-content:center;gap:16px;text-decoration:none;background:#fafafa;}
-  .play{width:60px;height:60px;border-radius:50%;background:#fff;border:1px solid var(--line);color:var(--accent);
-    font-size:22px;display:flex;align-items:center;justify-content:center;padding-left:4px;
-    box-shadow:0 4px 14px rgba(0,0,0,.07);transition:transform .15s;}
-  .frame.cover .ph:hover .play{transform:scale(1.06);}
-  .phinfo{font-size:12.5px;color:var(--soft);}
+  .frame{position:relative;width:100%;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#000;line-height:0;}
+  .frame .media{display:block;width:100%;height:auto;}
   .cap{display:block;margin-top:11px;font-size:13.5px;font-weight:bold;text-decoration:none;}
   .cap:hover{text-decoration:underline;}
   .cap .arr{color:var(--soft);}
@@ -72,22 +61,18 @@
         <h3><span class="n">01</span>Testimonianza paziente (storytelling)</h3>
         <div class="vids">
           <div class="vid">
-            <div class="frame cover">
-              <div class="igembed" data-ig="https://www.instagram.com/_dentalpro_/reel/DZHmhy5DwEr/"></div>
-              <a class="ph" href="https://www.instagram.com/_dentalpro_/reel/DZHmhy5DwEr/" target="_blank" rel="noopener">
-                <span class="play">&#9654;</span>
-                <span class="phinfo">@_dentalpro_ · Reel</span>
-              </a>
+            <div class="frame">
+              <video class="media" controls playsinline preload="metadata" poster="videos/DZHmhy5DwEr.jpg">
+                <source src="videos/DZHmhy5DwEr.mp4" type="video/mp4">
+              </video>
             </div>
             <a class="cap" href="https://www.instagram.com/_dentalpro_/reel/DZHmhy5DwEr/" target="_blank" rel="noopener">DentalPro – Zoraia <span class="arr">&#8599;</span></a>
           </div>
           <div class="vid">
-            <div class="frame cover">
-              <div class="igembed" data-ig="https://www.instagram.com/smile.centridentistici/reel/DY7ZCHSNfsE/"></div>
-              <a class="ph" href="https://www.instagram.com/smile.centridentistici/reel/DY7ZCHSNfsE/" target="_blank" rel="noopener">
-                <span class="play">&#9654;</span>
-                <span class="phinfo">@smile.centridentistici · Reel</span>
-              </a>
+            <div class="frame">
+              <video class="media" controls playsinline preload="metadata" poster="videos/DY7ZCHSNfsE.jpg">
+                <source src="videos/DY7ZCHSNfsE.mp4" type="video/mp4">
+              </video>
             </div>
             <a class="cap" href="https://www.instagram.com/smile.centridentistici/reel/DY7ZCHSNfsE/" target="_blank" rel="noopener">Smile – esperienza di Mauro <span class="arr">&#8599;</span></a>
           </div>
@@ -97,22 +82,18 @@
         <h3><span class="n">02</span>"Parla l'esperto" / Domanda &amp; Risposta</h3>
         <div class="vids">
           <div class="vid">
-            <div class="frame cover">
-              <div class="igembed" data-ig="https://www.instagram.com/odontosalute_group/reel/DZc2DzeDBGK/"></div>
-              <a class="ph" href="https://www.instagram.com/odontosalute_group/reel/DZc2DzeDBGK/" target="_blank" rel="noopener">
-                <span class="play">&#9654;</span>
-                <span class="phinfo">@odontosalute_group · Reel</span>
-              </a>
+            <div class="frame">
+              <video class="media" controls playsinline preload="metadata" poster="videos/DZc2DzeDBGK.jpg">
+                <source src="videos/DZc2DzeDBGK.mp4" type="video/mp4">
+              </video>
             </div>
             <a class="cap" href="https://www.instagram.com/odontosalute_group/reel/DZc2DzeDBGK/" target="_blank" rel="noopener">OdontoSalute – carico immediato <span class="arr">&#8599;</span></a>
           </div>
           <div class="vid">
-            <div class="frame cover">
-              <div class="igembed" data-ig="https://www.instagram.com/odontosalute_group/reel/DXH39EnCM3F/"></div>
-              <a class="ph" href="https://www.instagram.com/odontosalute_group/reel/DXH39EnCM3F/" target="_blank" rel="noopener">
-                <span class="play">&#9654;</span>
-                <span class="phinfo">@odontosalute_group · Reel</span>
-              </a>
+            <div class="frame">
+              <video class="media" controls playsinline preload="metadata" poster="videos/DXH39EnCM3F.jpg">
+                <source src="videos/DXH39EnCM3F.mp4" type="video/mp4">
+              </video>
             </div>
             <a class="cap" href="https://www.instagram.com/odontosalute_group/reel/DXH39EnCM3F/" target="_blank" rel="noopener">OdontoSalute – i denti si consumano? <span class="arr">&#8599;</span></a>
           </div>
@@ -122,22 +103,18 @@
         <h3><span class="n">03</span>Lista / "3 cose" (listicle educativo)</h3>
         <div class="vids">
           <div class="vid">
-            <div class="frame cover">
-              <div class="igembed" data-ig="https://www.instagram.com/smile.centridentistici/reel/DY17xe1tZlU/"></div>
-              <a class="ph" href="https://www.instagram.com/smile.centridentistici/reel/DY17xe1tZlU/" target="_blank" rel="noopener">
-                <span class="play">&#9654;</span>
-                <span class="phinfo">@smile.centridentistici · Reel</span>
-              </a>
+            <div class="frame">
+              <video class="media" controls playsinline preload="metadata" poster="videos/DY17xe1tZlU.jpg">
+                <source src="videos/DY17xe1tZlU.mp4" type="video/mp4">
+              </video>
             </div>
             <a class="cap" href="https://www.instagram.com/smile.centridentistici/reel/DY17xe1tZlU/" target="_blank" rel="noopener">Smile – tre abitudini dannose <span class="arr">&#8599;</span></a>
           </div>
           <div class="vid">
-            <div class="frame cover">
-              <div class="igembed" data-ig="https://www.instagram.com/smile.centridentistici/reel/DYpKjKctZqk/"></div>
-              <a class="ph" href="https://www.instagram.com/smile.centridentistici/reel/DYpKjKctZqk/" target="_blank" rel="noopener">
-                <span class="play">&#9654;</span>
-                <span class="phinfo">@smile.centridentistici · Reel</span>
-              </a>
+            <div class="frame">
+              <video class="media" controls playsinline preload="metadata" poster="videos/DYpKjKctZqk.jpg">
+                <source src="videos/DYpKjKctZqk.mp4" type="video/mp4">
+              </video>
             </div>
             <a class="cap" href="https://www.instagram.com/smile.centridentistici/reel/DYpKjKctZqk/" target="_blank" rel="noopener">Smile – tre segnali da non ignorare <span class="arr">&#8599;</span></a>
           </div>
@@ -147,12 +124,10 @@
         <h3><span class="n">04</span>Mito da sfatare / curiosità ("Lo sapevi che?")</h3>
         <div class="vids">
           <div class="vid">
-            <div class="frame cover">
-              <div class="igembed" data-ig="https://www.instagram.com/smile.centridentistici/reel/DZNRBPdtut6/"></div>
-              <a class="ph" href="https://www.instagram.com/smile.centridentistici/reel/DZNRBPdtut6/" target="_blank" rel="noopener">
-                <span class="play">&#9654;</span>
-                <span class="phinfo">@smile.centridentistici · Reel</span>
-              </a>
+            <div class="frame">
+              <video class="media" controls playsinline preload="metadata" poster="videos/DZNRBPdtut6.jpg">
+                <source src="videos/DZNRBPdtut6.mp4" type="video/mp4">
+              </video>
             </div>
             <a class="cap" href="https://www.instagram.com/smile.centridentistici/reel/DZNRBPdtut6/" target="_blank" rel="noopener">Smile – piercing e denti <span class="arr">&#8599;</span></a>
           </div>
@@ -162,22 +137,18 @@
         <h3><span class="n">05</span>Reel educativo "how-to" / consiglio pratico</h3>
         <div class="vids">
           <div class="vid">
-            <div class="frame cover">
-              <div class="igembed" data-ig="https://www.instagram.com/_dentalpro_/reel/DXtUiqkDL7U/"></div>
-              <a class="ph" href="https://www.instagram.com/_dentalpro_/reel/DXtUiqkDL7U/" target="_blank" rel="noopener">
-                <span class="play">&#9654;</span>
-                <span class="phinfo">@_dentalpro_ · Reel</span>
-              </a>
+            <div class="frame">
+              <video class="media" controls playsinline preload="metadata" poster="videos/DXtUiqkDL7U.jpg">
+                <source src="videos/DXtUiqkDL7U.mp4" type="video/mp4">
+              </video>
             </div>
             <a class="cap" href="https://www.instagram.com/_dentalpro_/reel/DXtUiqkDL7U/" target="_blank" rel="noopener">DentalPro – pulizia mascherine trasparenti <span class="arr">&#8599;</span></a>
           </div>
           <div class="vid">
-            <div class="frame cover">
-              <div class="igembed" data-ig="https://www.instagram.com/smile.centridentistici/reel/DZaOO8-NFTF/"></div>
-              <a class="ph" href="https://www.instagram.com/smile.centridentistici/reel/DZaOO8-NFTF/" target="_blank" rel="noopener">
-                <span class="play">&#9654;</span>
-                <span class="phinfo">@smile.centridentistici · Reel</span>
-              </a>
+            <div class="frame">
+              <video class="media" controls playsinline preload="metadata" poster="videos/DZaOO8-NFTF.jpg">
+                <source src="videos/DZaOO8-NFTF.mp4" type="video/mp4">
+              </video>
             </div>
             <a class="cap" href="https://www.instagram.com/smile.centridentistici/reel/DZaOO8-NFTF/" target="_blank" rel="noopener">Smile – spazzolino elettrico nei bambini <span class="arr">&#8599;</span></a>
           </div>
@@ -187,22 +158,18 @@
         <h3><span class="n">06</span>Caso clinico / risultato d'intervento</h3>
         <div class="vids">
           <div class="vid">
-            <div class="frame cover">
-              <div class="igembed" data-ig="https://www.instagram.com/smile.centridentistici/reel/DZfbXQAtqtA/"></div>
-              <a class="ph" href="https://www.instagram.com/smile.centridentistici/reel/DZfbXQAtqtA/" target="_blank" rel="noopener">
-                <span class="play">&#9654;</span>
-                <span class="phinfo">@smile.centridentistici · Reel</span>
-              </a>
+            <div class="frame">
+              <video class="media" controls playsinline preload="metadata" poster="videos/DZfbXQAtqtA.jpg">
+                <source src="videos/DZfbXQAtqtA.mp4" type="video/mp4">
+              </video>
             </div>
             <a class="cap" href="https://www.instagram.com/smile.centridentistici/reel/DZfbXQAtqtA/" target="_blank" rel="noopener">Smile – 10 impianti in un giorno <span class="arr">&#8599;</span></a>
           </div>
           <div class="vid">
-            <div class="frame cover">
-              <div class="igembed" data-ig="https://www.instagram.com/studioemanuelepuzzilli/reel/DY0BKSGK6z_/"></div>
-              <a class="ph" href="https://www.instagram.com/studioemanuelepuzzilli/reel/DY0BKSGK6z_/" target="_blank" rel="noopener">
-                <span class="play">&#9654;</span>
-                <span class="phinfo">@studioemanuelepuzzilli · Reel</span>
-              </a>
+            <div class="frame">
+              <video class="media" controls playsinline preload="metadata" poster="videos/DY0BKSGK6z_.jpg">
+                <source src="videos/DY0BKSGK6z_.mp4" type="video/mp4">
+              </video>
             </div>
             <a class="cap" href="https://www.instagram.com/studioemanuelepuzzilli/reel/DY0BKSGK6z_/" target="_blank" rel="noopener">Puzzilli – trasformazione in due appuntamenti <span class="arr">&#8599;</span></a>
           </div>
@@ -212,12 +179,10 @@
         <h3><span class="n">07</span>Reel educativo su un trattamento estetico</h3>
         <div class="vids">
           <div class="vid">
-            <div class="frame cover">
-              <div class="igembed" data-ig="https://www.instagram.com/studioemanuelepuzzilli/reel/DZa43gqKV37/"></div>
-              <a class="ph" href="https://www.instagram.com/studioemanuelepuzzilli/reel/DZa43gqKV37/" target="_blank" rel="noopener">
-                <span class="play">&#9654;</span>
-                <span class="phinfo">@studioemanuelepuzzilli · Reel</span>
-              </a>
+            <div class="frame">
+              <video class="media" controls playsinline preload="metadata" poster="videos/DZa43gqKV37.jpg">
+                <source src="videos/DZa43gqKV37.mp4" type="video/mp4">
+              </video>
             </div>
             <a class="cap" href="https://www.instagram.com/studioemanuelepuzzilli/reel/DZa43gqKV37/" target="_blank" rel="noopener">Puzzilli – le faccette dentali <span class="arr">&#8599;</span></a>
           </div>
@@ -227,22 +192,18 @@
         <h3><span class="n">08</span>Reel cinematic / branding emozionale</h3>
         <div class="vids">
           <div class="vid">
-            <div class="frame cover">
-              <div class="igembed" data-ig="https://www.instagram.com/studioemanuelepuzzilli/reel/DZe952hqKzn/"></div>
-              <a class="ph" href="https://www.instagram.com/studioemanuelepuzzilli/reel/DZe952hqKzn/" target="_blank" rel="noopener">
-                <span class="play">&#9654;</span>
-                <span class="phinfo">@studioemanuelepuzzilli · Reel</span>
-              </a>
+            <div class="frame">
+              <video class="media" controls playsinline preload="metadata" poster="videos/DZe952hqKzn.jpg">
+                <source src="videos/DZe952hqKzn.mp4" type="video/mp4">
+              </video>
             </div>
             <a class="cap" href="https://www.instagram.com/studioemanuelepuzzilli/reel/DZe952hqKzn/" target="_blank" rel="noopener">Puzzilli – tre città, una visione <span class="arr">&#8599;</span></a>
           </div>
           <div class="vid">
-            <div class="frame cover">
-              <div class="igembed" data-ig="https://www.instagram.com/studioemanuelepuzzilli/reel/DY4uXybMzTn/"></div>
-              <a class="ph" href="https://www.instagram.com/studioemanuelepuzzilli/reel/DY4uXybMzTn/" target="_blank" rel="noopener">
-                <span class="play">&#9654;</span>
-                <span class="phinfo">@studioemanuelepuzzilli · Reel</span>
-              </a>
+            <div class="frame">
+              <video class="media" controls playsinline preload="metadata" poster="videos/DY4uXybMzTn.jpg">
+                <source src="videos/DY4uXybMzTn.mp4" type="video/mp4">
+              </video>
             </div>
             <a class="cap" href="https://www.instagram.com/studioemanuelepuzzilli/reel/DY4uXybMzTn/" target="_blank" rel="noopener">Puzzilli – ogni volto la sua luce <span class="arr">&#8599;</span></a>
           </div>
@@ -252,12 +213,10 @@
         <h3><span class="n">09</span>Reel ironico / POV / relatable</h3>
         <div class="vids">
           <div class="vid">
-            <div class="frame cover">
-              <div class="igembed" data-ig="https://www.instagram.com/smile.centridentistici/reel/DZHpXL8NqsA/"></div>
-              <a class="ph" href="https://www.instagram.com/smile.centridentistici/reel/DZHpXL8NqsA/" target="_blank" rel="noopener">
-                <span class="play">&#9654;</span>
-                <span class="phinfo">@smile.centridentistici · Reel</span>
-              </a>
+            <div class="frame">
+              <video class="media" controls playsinline preload="metadata" poster="videos/DZHpXL8NqsA.jpg">
+                <source src="videos/DZHpXL8NqsA.mp4" type="video/mp4">
+              </video>
             </div>
             <a class="cap" href="https://www.instagram.com/smile.centridentistici/reel/DZHpXL8NqsA/" target="_blank" rel="noopener">Smile – "sei solo una dentista" <span class="arr">&#8599;</span></a>
           </div>
@@ -267,22 +226,16 @@
         <h3><span class="n">10</span>Collaborazione con influencer / personaggi noti</h3>
         <div class="vids">
           <div class="vid">
-            <div class="frame cover">
-              <div class="igembed" data-ig="https://www.instagram.com/reginabaresi9/reel/DYPUWAGMfGq/"></div>
-              <a class="ph" href="https://www.instagram.com/reginabaresi9/reel/DYPUWAGMfGq/" target="_blank" rel="noopener">
-                <span class="play">&#9654;</span>
-                <span class="phinfo">@reginabaresi9 · Reel</span>
-              </a>
+            <div class="frame">
+              <video class="media" controls playsinline preload="metadata" poster="videos/DYPUWAGMfGq.jpg">
+                <source src="videos/DYPUWAGMfGq.mp4" type="video/mp4">
+              </video>
             </div>
             <a class="cap" href="https://www.instagram.com/reginabaresi9/reel/DYPUWAGMfGq/" target="_blank" rel="noopener">DentalPro × Regina Baresi <span class="arr">&#8599;</span></a>
           </div>
           <div class="vid">
-            <div class="frame cover">
-              <div class="igembed" data-ig="https://www.instagram.com/michael_lonewolf_/p/DLFd3tutpBG/"></div>
-              <a class="ph" href="https://www.instagram.com/michael_lonewolf_/p/DLFd3tutpBG/" target="_blank" rel="noopener">
-                <span class="play">&#9654;</span>
-                <span class="phinfo">@michael_lonewolf_ · Post</span>
-              </a>
+            <div class="frame">
+              <img class="media" src="videos/DLFd3tutpBG.jpg" loading="lazy" alt="">
             </div>
             <a class="cap" href="https://www.instagram.com/michael_lonewolf_/p/DLFd3tutpBG/" target="_blank" rel="noopener">D. Puzzilli – paziente sportivo (boxe) <span class="arr">&#8599;</span></a>
           </div>
@@ -292,12 +245,10 @@
         <h3><span class="n">11</span>Podcast / intervista (long-form ricondiviso)</h3>
         <div class="vids">
           <div class="vid">
-            <div class="frame cover">
-              <div class="igembed" data-ig="https://www.instagram.com/turningtimepodcast/reel/DSKO9suCOfD/"></div>
-              <a class="ph" href="https://www.instagram.com/turningtimepodcast/reel/DSKO9suCOfD/" target="_blank" rel="noopener">
-                <span class="play">&#9654;</span>
-                <span class="phinfo">@turningtimepodcast · Reel</span>
-              </a>
+            <div class="frame">
+              <video class="media" controls playsinline preload="metadata" poster="videos/DSKO9suCOfD.jpg">
+                <source src="videos/DSKO9suCOfD.mp4" type="video/mp4">
+              </video>
             </div>
             <a class="cap" href="https://www.instagram.com/turningtimepodcast/reel/DSKO9suCOfD/" target="_blank" rel="noopener">D. Puzzilli – bruxismo vs serramento <span class="arr">&#8599;</span></a>
           </div>
@@ -307,22 +258,18 @@
         <h3><span class="n">12</span>Causa sociale / Fondazione (brand purpose)</h3>
         <div class="vids">
           <div class="vid">
-            <div class="frame cover">
-              <div class="igembed" data-ig="https://www.instagram.com/fondazionepuzzilli/reel/DCyeJtiNoMG/"></div>
-              <a class="ph" href="https://www.instagram.com/fondazionepuzzilli/reel/DCyeJtiNoMG/" target="_blank" rel="noopener">
-                <span class="play">&#9654;</span>
-                <span class="phinfo">@fondazionepuzzilli · Reel</span>
-              </a>
+            <div class="frame">
+              <video class="media" controls playsinline preload="metadata" poster="videos/DCyeJtiNoMG.jpg">
+                <source src="videos/DCyeJtiNoMG.mp4" type="video/mp4">
+              </video>
             </div>
             <a class="cap" href="https://www.instagram.com/fondazionepuzzilli/reel/DCyeJtiNoMG/" target="_blank" rel="noopener">Fondazione – 25 novembre <span class="arr">&#8599;</span></a>
           </div>
           <div class="vid">
-            <div class="frame cover">
-              <div class="igembed" data-ig="https://www.instagram.com/fondazionepuzzilli/reel/DAqjQU0t00-/"></div>
-              <a class="ph" href="https://www.instagram.com/fondazionepuzzilli/reel/DAqjQU0t00-/" target="_blank" rel="noopener">
-                <span class="play">&#9654;</span>
-                <span class="phinfo">@fondazionepuzzilli · Reel</span>
-              </a>
+            <div class="frame">
+              <video class="media" controls playsinline preload="metadata" poster="videos/DAqjQU0t00-.jpg">
+                <source src="videos/DAqjQU0t00-.mp4" type="video/mp4">
+              </video>
             </div>
             <a class="cap" href="https://www.instagram.com/fondazionepuzzilli/reel/DAqjQU0t00-/" target="_blank" rel="noopener">Fondazione – raccolta fondi <span class="arr">&#8599;</span></a>
           </div>
@@ -335,12 +282,8 @@
         <h3><span class="n">13</span>Carosello / post "Falsi Miti"</h3>
         <div class="vids">
           <div class="vid">
-            <div class="frame cover">
-              <div class="igembed" data-ig="https://www.instagram.com/_dentalpro_/p/DZfGcwiD9u0/"></div>
-              <a class="ph" href="https://www.instagram.com/_dentalpro_/p/DZfGcwiD9u0/" target="_blank" rel="noopener">
-                <span class="play">&#9654;</span>
-                <span class="phinfo">@_dentalpro_ · Post</span>
-              </a>
+            <div class="frame">
+              <img class="media" src="videos/DZfGcwiD9u0.jpg" loading="lazy" alt="">
             </div>
             <a class="cap" href="https://www.instagram.com/_dentalpro_/p/DZfGcwiD9u0/" target="_blank" rel="noopener">DentalPro – mito sbiancamento <span class="arr">&#8599;</span></a>
           </div>
@@ -350,22 +293,14 @@
         <h3><span class="n">14</span>Post educativo su un trattamento ("Cos'è…")</h3>
         <div class="vids">
           <div class="vid">
-            <div class="frame cover">
-              <div class="igembed" data-ig="https://www.instagram.com/_dentalpro_/p/DYeWSrHGuTm/"></div>
-              <a class="ph" href="https://www.instagram.com/_dentalpro_/p/DYeWSrHGuTm/" target="_blank" rel="noopener">
-                <span class="play">&#9654;</span>
-                <span class="phinfo">@_dentalpro_ · Post</span>
-              </a>
+            <div class="frame">
+              <img class="media" src="videos/DYeWSrHGuTm.jpg" loading="lazy" alt="">
             </div>
             <a class="cap" href="https://www.instagram.com/_dentalpro_/p/DYeWSrHGuTm/" target="_blank" rel="noopener">DentalPro – Overdenture, cos'è <span class="arr">&#8599;</span></a>
           </div>
           <div class="vid">
-            <div class="frame cover">
-              <div class="igembed" data-ig="https://www.instagram.com/_dentalpro_/p/DY1hnaVDFgd/"></div>
-              <a class="ph" href="https://www.instagram.com/_dentalpro_/p/DY1hnaVDFgd/" target="_blank" rel="noopener">
-                <span class="play">&#9654;</span>
-                <span class="phinfo">@_dentalpro_ · Post</span>
-              </a>
+            <div class="frame">
+              <img class="media" src="videos/DY1hnaVDFgd.jpg" loading="lazy" alt="">
             </div>
             <a class="cap" href="https://www.instagram.com/_dentalpro_/p/DY1hnaVDFgd/" target="_blank" rel="noopener">DentalPro – odontoiatria estetica <span class="arr">&#8599;</span></a>
           </div>
@@ -375,12 +310,8 @@
         <h3><span class="n">15</span>Giornata mondiale / ricorrenza</h3>
         <div class="vids">
           <div class="vid">
-            <div class="frame cover">
-              <div class="igembed" data-ig="https://www.instagram.com/_dentalpro_/p/DY_icPTjECn/"></div>
-              <a class="ph" href="https://www.instagram.com/_dentalpro_/p/DY_icPTjECn/" target="_blank" rel="noopener">
-                <span class="play">&#9654;</span>
-                <span class="phinfo">@_dentalpro_ · Post</span>
-              </a>
+            <div class="frame">
+              <img class="media" src="videos/DY_icPTjECn.jpg" loading="lazy" alt="">
             </div>
             <a class="cap" href="https://www.instagram.com/_dentalpro_/p/DY_icPTjECn/" target="_blank" rel="noopener">DentalPro – Giornata senza tabacco <span class="arr">&#8599;</span></a>
           </div>
@@ -390,12 +321,8 @@
         <h3><span class="n">16</span>Evento / open day / giornata informativa</h3>
         <div class="vids">
           <div class="vid">
-            <div class="frame cover">
-              <div class="igembed" data-ig="https://www.instagram.com/_dentalpro_/p/DYCavyzGk-9/"></div>
-              <a class="ph" href="https://www.instagram.com/_dentalpro_/p/DYCavyzGk-9/" target="_blank" rel="noopener">
-                <span class="play">&#9654;</span>
-                <span class="phinfo">@_dentalpro_ · Post</span>
-              </a>
+            <div class="frame">
+              <img class="media" src="videos/DYCavyzGk-9.jpg" loading="lazy" alt="">
             </div>
             <a class="cap" href="https://www.instagram.com/_dentalpro_/p/DYCavyzGk-9/" target="_blank" rel="noopener">DentalPro – giornate sull'implantologia <span class="arr">&#8599;</span></a>
           </div>
@@ -405,22 +332,14 @@
         <h3><span class="n">17</span>Citazione / post emozionale di brand</h3>
         <div class="vids">
           <div class="vid">
-            <div class="frame cover">
-              <div class="igembed" data-ig="https://www.instagram.com/_dentalpro_/p/DYJpJ8Gnzpy/"></div>
-              <a class="ph" href="https://www.instagram.com/_dentalpro_/p/DYJpJ8Gnzpy/" target="_blank" rel="noopener">
-                <span class="play">&#9654;</span>
-                <span class="phinfo">@_dentalpro_ · Post</span>
-              </a>
+            <div class="frame">
+              <img class="media" src="videos/DYJpJ8Gnzpy.jpg" loading="lazy" alt="">
             </div>
             <a class="cap" href="https://www.instagram.com/_dentalpro_/p/DYJpJ8Gnzpy/" target="_blank" rel="noopener">DentalPro – "c'è un sorriso…" <span class="arr">&#8599;</span></a>
           </div>
           <div class="vid">
-            <div class="frame cover">
-              <div class="igembed" data-ig="https://www.instagram.com/studioemanuelepuzzilli/p/DY7GOZiinw5/"></div>
-              <a class="ph" href="https://www.instagram.com/studioemanuelepuzzilli/p/DY7GOZiinw5/" target="_blank" rel="noopener">
-                <span class="play">&#9654;</span>
-                <span class="phinfo">@studioemanuelepuzzilli · Post</span>
-              </a>
+            <div class="frame">
+              <img class="media" src="videos/DY7GOZiinw5.jpg" loading="lazy" alt="">
             </div>
             <a class="cap" href="https://www.instagram.com/studioemanuelepuzzilli/p/DY7GOZiinw5/" target="_blank" rel="noopener">Puzzilli – il sorriso che… <span class="arr">&#8599;</span></a>
           </div>
@@ -433,36 +352,5 @@
   </footer>
 
 </div>
-<script>
-/* Lazy-load embed Instagram: pagina istantanea, il video si tenta solo quando scrolli sulla card.
-   Dove il browser lo serve (pagina su URL web reale), il placeholder si nasconde e compare il video. */
-(function(){
-  var SRC="https://www.instagram.com/embed.js";
-  function loadEmbedJs(){
-    if(document.getElementById("ig-embed-js"))return;
-    var s=document.createElement("script");s.id="ig-embed-js";s.async=true;s.src=SRC;document.body.appendChild(s);
-  }
-  function inject(fr){
-    var h=fr.querySelector(".igembed");
-    if(!h||h.dataset.loaded)return; h.dataset.loaded="1";
-    h.innerHTML='<blockquote class="instagram-media" data-instgrm-permalink="'+h.dataset.ig+
-      '" data-instgrm-version="14" style="background:#FFF;border:0;margin:0;padding:0;width:100%;min-width:300px;max-width:100%;"></blockquote>';
-    loadEmbedJs();
-    var n=0,id=setInterval(function(){
-      if(window.instgrm&&window.instgrm.Embeds){try{window.instgrm.Embeds.process();}catch(e){}}
-      var ifr=h.querySelector("iframe");
-      if(ifr&&ifr.getBoundingClientRect().height>170){fr.classList.remove("cover");clearInterval(id);}
-      if(++n>10)clearInterval(id);
-    },1200);
-  }
-  var cards=document.querySelectorAll(".frame.cover");
-  if("IntersectionObserver" in window){
-    var io=new IntersectionObserver(function(es){
-      es.forEach(function(e){if(e.isIntersecting){inject(e.target);io.unobserve(e.target);}});
-    },{rootMargin:"340px"});
-    cards.forEach(function(fr){io.observe(fr);});
-  } else { cards.forEach(inject); }
-})();
-</script>
 </body>
 </html>
